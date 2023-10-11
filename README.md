@@ -5,3 +5,7 @@ Automation Facebook Bot React with Google Script
 [Click here](https://jalancoder.blogspot.com/2018/04/cara-membuat-bot-reaction-dengan.html?m=1)
 
 # Thanks to JalanCoder
+# Repo Visitor
+![Hits](https://hits.sh/github.com/403Code/Bot-React.svg)
+
+next update is renewing the syntax.
