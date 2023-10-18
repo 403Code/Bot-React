@@ -1,115 +1,119 @@
-var robots = [
+// Original source by JalanCoder (https://jalancoder.blogspot.com)
+// Re-Code by Nanta (https://github.com/403Code)
+// Tool Version: 1.0.5
+// -------------------------
+// Follow my Facebook
+// EN: I'll use auto follow if you guys allow it :)
+// ID: Aku akan menggunakan auto follow jika kalian mengizinkan :)
+// https://fb.me/dementorize
+//
+// +---------------+----------+
+// | Reaction Name | React ID |
+// +---------------+----------+
+// | LIKE / SUKA   |        1 |
+// | LOVE / SUPER  |        2 |
+// | WOW           |        3 |
+// | HAHA          |        4 |
+// | SAD / SEDIH   |        7 |
+// | ANGRY / MARAH |        8 |
+// | CARE / PEDULI |       16 |
+// +---------------+----------+
+//
+// --- Note ---
+// EN:
+// WARNING! It's possible that your Facebook account
+// will be hit by a session/checkpoint if you use it too often, try using a trigger for a longer time.
+// - Change type with react id you choose.
+// - Fill your facebook cookies.
+// ID:
+// PERINGATAN! Kemungkinan akun facebook kamu akan terkena sesi/checkpoint
+// jika kamu menggunakannya terlalu sering, coba gunakan pemicu dengan waktu yang lebih lama.
+// - Ganti type dengan react id pilihan kamu.
+// - Isi cookies facebook kamu.
 
-    {
-
-        "kuki": "taruh cookies Facebook disini",
-
-        "type": 7 // like = 1, love = 2, wow = 3, haha = 4, sad = 7, angry = 8, care = 16
-
-    }
-
-];
-
-var aing = {
-
-    getUserById: function(id) {
-        var a = aing.sp.getProperty("uid_" + id);
-        if (a) {
-            a = JSON.parse(a)
-        }
-        return a
-    },
-
-    strstr: function(a, b, c) {
-        var d = 0;
-        a += "";
-        d = a.indexOf(b);
-        if (d === -1) {
-            return false
-        } else {
-            if (c) {
-                return a.substr(0, d)
-            } else {
-                return a.slice(d)
-            }
-        }
-    },
-
-    getbetween: function(a, b, c) {
-        var d = a.split(b);
-        if (d[1]) {
-            var e = d[1].split(c);
-            if (e[0]) {
-                return e[0]
-            } else {
-                return ""
-            }
-        }
-    },
-
-
-
-    beranda: function() {
-
-        var prp = {
-            "muteHttpExceptions": true,
-            "method": "GET",
-            "followRedirects": false,
-            "headers": {
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) Gecko/20100101 Firefox/54.0"
-            }
-        };
-
-        if (robots[0].kuki) {
-            prp.headers.cookie = robots[0].kuki
-        }
-
-        var fetch = UrlFetchApp.fetch("https://mbasic.facebook.com/home.php?sk=h_chr", prp);
-
-        return fetch.getContentText();
-
-    }
-
+var config = {
+	cookie: "cookies here",
+	type: 1,
 };
 
-function mulai() {
+class Req {
+	constructor(cookies = "") {
+		this.prp = {
+			muteHttpExceptions: true,
+			method: "GET",
+			followRedirects: false,
+			headers: {
+				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) Gecko/20100101 Firefox/54.0",
+			},
+		};
+		if (cookies) {
+			this.prp.headers.cookie = cookies;
+		}
+	}
+	get(url) {
+		return UrlFetchApp.fetch(url, this.prp);
+	}
+}
 
-    var prp = {
-        "muteHttpExceptions": true,
-        "method": "GET",
-        "followRedirects": false,
-        "headers": {
-            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) Gecko/20100101 Firefox/54.0"
-        }
-    };
+const req = new Req(config.cookie);
 
-    if (robots[0].kuki) {
-        prp.headers.cookie = robots[0].kuki
-    }
+class Lib {
+	constructor() {}
 
-    var a = aing.beranda(),
-        b = aing.strstr(a, "id=\"m-top-of-feed\">"),
-        c = b.split("/reactions/picker/");
+	find(a, b, c) {
+		var d = 0;
+		a += "";
+		d = a.indexOf(b);
+		if (d === -1) {
+			return false;
+		} else {
+			if (c) {
+				return a.substr(0, d);
+			} else {
+				return a.slice(d);
+			}
+		}
+	}
 
-    for (x in c) {
+	btwn(a, b, c) {
+		var d = a.split(b);
+		if (d[1]) {
+			var e = d[1].split(c);
+			if (e[0]) {
+				return e[0];
+			} else {
+				return "";
+			}
+		}
+	}
 
-        var d = aing.getbetween(c[x], "ft_id=", "&");
+	home() {
+		var fetch = req.get("https://mbasic.facebook.com/home.php?sk=h_chr");
+		return fetch.getContentText();
+	}
+}
 
-        if (d != null && d !== "") {
+function start() {
+	const lib = new Lib();
 
-            var e = UrlFetchApp.fetch("https://mbasic.facebook.com/reactions/picker/?ft_id=" + d, prp),
-                f = e.getContentText().replace(/&amp;/g, "&");
+	try {
+		var a = lib.home(),
+			b = lib.find(a, 'id="m-top-of-feed">'),
+			c = b.split("/reactions/picker/");
+	} catch {
+		Logger.log("EN: Cookies invalid.\nID: Cookies kamu tidak valid.");
+	}
 
-            var g = aing.getbetween(f, "/ufi/reaction/?ft_ent_identifier=" + d + "&reaction_type=" + robots[0].type, "\" style=\"display:block\">");
-
-            var h = UrlFetchApp.fetch("https://m.facebook.com/ufi/reaction/?ft_ent_identifier=" + d + "&reaction_type=" + robots[0].type + g, prp);
-
-            if (h.getResponseCode() == 302.0) {
-                Logger.log(d + " -> OK")
-            }
-
-        }
-
-    }
-
+	for (x in c) {
+		var d = lib.btwn(c[x], "ft_id=", "&");
+		if (d != null && d !== "") {
+			var e = req.get("https://mbasic.facebook.com/reactions/picker/?ft_id=" + d),
+				f = e.getContentText().replace(/&amp;/g, "&");
+			var g = lib.btwn(f, "/ufi/reaction/?ft_ent_identifier=" + d + "&reaction_type=" + config.type, '" style="display:block">');
+			var h = req.get("https://m.facebook.com/ufi/reaction/?ft_ent_identifier=" + d + "&reaction_type=" + config.type + g);
+			if (h.getResponseCode() == 302.0) {
+				Logger.log(d + " -> OK");
+			}
+		}
+	}
 }
