@@ -20,7 +20,7 @@ Install tutorial in this [blog post](https://jalancoder.blogspot.com/2018/04/car
 Facebook Bot React Otomatis dengan Google Script
 
 ## Cara Pemasangan
-Cara pemasangan ada pada [postingan blog](https://jalancoder.blogspot.com/2018/04/cara-membuat-bot-reaction-dengan.html?m=1) atau [vide YouTube](https://youtu.be/hEModq8ZAUc)
+Cara pemasangan ada pada [postingan blog](https://jalancoder.blogspot.com/2018/04/cara-membuat-bot-reaction-dengan.html?m=1) atau [video YouTube](https://youtu.be/hEModq8ZAUc)
 
 ## Terimakasih kepada JalanCoder
 ## Pengunjung Repositori
