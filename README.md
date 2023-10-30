@@ -1,5 +1,5 @@
-# EN
-## Bot-React
+# EN i
+## Bot-React v1.0.5
 Automation Facebook Bot React with Google Script
 
 ## How to install
@@ -11,12 +11,12 @@ Install tutorial in this [blog post](https://jalancoder.blogspot.com/2018/04/car
 
 ## Update TODO:
 - [x] Re-structuring code.
-- [ ] Reacting posts more than 1 react.
-- [ ] Adding posts comments.
-- [ ] Change cookies from pastebin or anywhere.
+- [ ] Reacting posts more than 1 react. ![new](https://raw.githubusercontent.com/403Code/403Code/main/picture/new.gif)
+- [ ] Adding posts comments. ![new](https://raw.githubusercontent.com/403Code/403Code/main/picture/new.gif)
+- [ ] Change cookies from pastebin or anywhere. ![new](https://raw.githubusercontent.com/403Code/403Code/main/picture/new.gif)
 
 # ID
-## Bot-React
+## Bot-React v1.0.5
 Facebook Bot React Otomatis dengan Google Script
 
 ## Cara Pemasangan
@@ -28,6 +28,6 @@ Cara pemasangan ada pada [postingan blog](https://jalancoder.blogspot.com/2018/0
 
 ## Update TODO:
 - [x] Merestrukturisasi kode.
-- [ ] Mereaksi postingan lebih dari 1 reaksi.
-- [ ] Menambahkan komentar postingan
-- [ ] Ganti cookie lewat pastebin atau darimana saja.
+- [ ] Mereaksi postingan lebih dari 1 reaksi. ![new](https://raw.githubusercontent.com/403Code/403Code/main/picture/new.gif)
+- [ ] Menambahkan komentar postingan. ![new](https://raw.githubusercontent.com/403Code/403Code/main/picture/new.gif)
+- [ ] Ganti cookie lewat pastebin atau darimana saja. ![new](https://raw.githubusercontent.com/403Code/403Code/main/picture/new.gif)
