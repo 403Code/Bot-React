@@ -1,4 +1,4 @@
-# EN i
+# EN
 ## Bot-React v1.0.5
 Automation Facebook Bot React with Google Script
 
