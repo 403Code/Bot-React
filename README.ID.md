@@ -1,4 +1,4 @@
-# Bot-React v1.0.5
+# Bot-React v1.1
 Facebook Bot React Otomatis dengan Google Script
 
 # Cara Pemasangan
@@ -10,6 +10,6 @@ Cara pemasangan ada pada [postingan blog](https://jalancoder.blogspot.com/2018/0
 
 # Update TODO:
 - [x] Merestrukturisasi kode.
-- [ ] Mereaksi postingan lebih dari 1 reaksi. ![new](https://raw.githubusercontent.com/403Code/403Code/main/picture/new.gif)
+- [x] Mereaksi postingan lebih dari 1 reaksi. ![new](https://raw.githubusercontent.com/403Code/403Code/main/picture/new.gif)
 - [ ] Menambahkan komentar postingan. ![new](https://raw.githubusercontent.com/403Code/403Code/main/picture/new.gif)
 - [ ] Ganti cookie lewat pastebin atau darimana saja. ![new](https://raw.githubusercontent.com/403Code/403Code/main/picture/new.gif)
