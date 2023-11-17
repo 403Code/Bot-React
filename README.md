@@ -1,5 +1,5 @@
 
-# Bot-React v1.0.5
+# Bot-React v1.1
 Automation Facebook Bot React with Google Script
 
 # How to install
@@ -11,6 +11,6 @@ Install tutorial in this [blog post](https://jalancoder.blogspot.com/2018/04/car
 
 # Update TODO:
 - [x] Re-structuring code.
-- [ ] Reacting posts more than 1 react. ![new](https://raw.githubusercontent.com/403Code/403Code/main/picture/new.gif)
+- [x] Reacting posts more than 1 react. ![new](https://raw.githubusercontent.com/403Code/403Code/main/picture/new.gif)
 - [ ] Adding posts comments. ![new](https://raw.githubusercontent.com/403Code/403Code/main/picture/new.gif)
 - [ ] Change cookies from pastebin or anywhere. ![new](https://raw.githubusercontent.com/403Code/403Code/main/picture/new.gif)
