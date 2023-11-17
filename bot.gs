@@ -1,6 +1,6 @@
 // Original source by JalanCoder (https://jalancoder.blogspot.com)
 // Re-Code by Nanta (https://github.com/403Code)
-// Tool Version: 1.0.5
+// Tool Version: 1.1
 // -------------------------
 // Follow my Facebook
 // EN: I'll use auto follow if you guys allow it :)
@@ -32,9 +32,21 @@
 // - Isi cookies facebook kamu.
 
 var config = {
-	cookie: "cookies here",
-	type: 1,
+	cookie:
+		"<cookies here>",
+	reactType: [1],
 };
+
+// XXX
+// Don't change anything in here.
+var reactTable = {}
+reactTable[1] = "LIKE";
+reactTable[2] = "LOVE";
+reactTable[3] = "WOW";
+reactTable[4] = "HAHA";
+reactTable[7] = "SAD";
+reactTable[8] = "ANGRY";
+reactTable[16] = "CARE";
 
 class Req {
 	constructor(cookies = "") {
@@ -46,7 +58,7 @@ class Req {
 				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) Gecko/20100101 Firefox/54.0",
 			},
 		};
-		if (cookies) {
+		if (cookies !== "") {
 			this.prp.headers.cookie = cookies;
 		}
 	}
@@ -91,7 +103,12 @@ class Lib {
 		var fetch = req.get("https://mbasic.facebook.com/home.php?sk=h_chr");
 		return fetch.getContentText();
 	}
+
+	random(a) {
+		return a ? Math.floor(Math.random() * a.length) : null;
+	}
 }
+
 
 function start() {
 	const lib = new Lib();
@@ -103,17 +120,20 @@ function start() {
 	} catch {
 		Logger.log("EN: Cookies invalid.\nID: Cookies kamu tidak valid.");
 	}
-
 	for (x in c) {
-		var d = lib.btwn(c[x], "ft_id=", "&");
+		var d = lib.btwn(c[x], "ft_id=", "&"),
+			tipe = config.reactType;
+		var acak = lib.random(tipe);
 		if (d != null && d !== "") {
+			var reacts = tipe[acak];
 			var e = req.get("https://mbasic.facebook.com/reactions/picker/?ft_id=" + d),
 				f = e.getContentText().replace(/&amp;/g, "&");
-			var g = lib.btwn(f, "/ufi/reaction/?ft_ent_identifier=" + d + "&reaction_type=" + config.type, '" style="display:block">');
-			var h = req.get("https://m.facebook.com/ufi/reaction/?ft_ent_identifier=" + d + "&reaction_type=" + config.type + g);
+			var g = lib.btwn(f, "/ufi/reaction/?ft_ent_identifier=" + d + "&reaction_type=" + reacts, '" style="display:block">');
+			var h = req.get("https://m.facebook.com/ufi/reaction/?ft_ent_identifier=" + d + "&reaction_type=" + reacts + g);
 			if (h.getResponseCode() == 302.0) {
-				Logger.log(d + " -> OK");
+				Logger.log(`--- React Success ---\nPost ID : ${d}\nReact   : ${reactTable[reacts]}\n---------------------`);
 			}
 		}
 	}
 }
+// XXX
