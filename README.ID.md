@@ -1,4 +1,4 @@
-# Bot-React v1.1
+# Bot-React v1.2
 Facebook Bot React Otomatis dengan Google Script
 
 # Cara Pemasangan
