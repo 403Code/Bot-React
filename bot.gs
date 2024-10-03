@@ -1,6 +1,6 @@
 // Original source by JalanCoder (https://jalancoder.blogspot.com)
 // Re-Code by Nanta (https://github.com/403Code)
-// Tool Version: 1.1
+// Tool Version: 1.2
 // -------------------------
 // Follow my Facebook
 // EN: I'll use auto follow if you guys allow it :)
@@ -33,8 +33,8 @@
 
 var config = {
 	cookie:
-		"<cookies here>",
-	reactType: [1],
+		"xxx",
+	reactType: [1,16,2,3],
 };
 
 // XXX
@@ -59,12 +59,19 @@ class Req {
 			},
 		};
 		if (cookies !== "") {
-			this.prp.headers.cookie = cookies;
+			this.check(cookies);
 		}
 	}
 	get(url) {
 		return UrlFetchApp.fetch(url, this.prp);
 	}
+  check(c) {
+    try {
+      this.prp.headers.cookie = this.get(c).getContentText();
+    } catch {
+      this.prp.headers.cookie = c;
+    }
+  }
 }
 
 const req = new Req(config.cookie);
