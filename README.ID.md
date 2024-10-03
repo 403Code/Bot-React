@@ -12,4 +12,4 @@ Cara pemasangan ada pada [postingan blog](https://jalancoder.blogspot.com/2018/0
 - [x] Merestrukturisasi kode.
 - [x] Mereaksi postingan lebih dari 1 reaksi. ![new](https://raw.githubusercontent.com/403Code/403Code/main/picture/new.gif)
 - [ ] Menambahkan komentar postingan. ![new](https://raw.githubusercontent.com/403Code/403Code/main/picture/new.gif)
-- [ ] Ganti cookie lewat pastebin atau darimana saja. ![new](https://raw.githubusercontent.com/403Code/403Code/main/picture/new.gif)
+- [x] Ganti cookie lewat pastebin atau darimana saja. ![new](https://raw.githubusercontent.com/403Code/403Code/main/picture/new.gif)
