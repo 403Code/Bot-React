@@ -1,3 +1,4 @@
+### Notice: This repository is currently not being actively maintained. There is no set timeline for future updates. Feel free to explore or fork the project as needed.
 
 # Bot-React v1.2
 Automation Facebook Bot React with Google Script
