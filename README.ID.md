@@ -2,6 +2,7 @@
  <img src="https://raw.githubusercontent.com/403Code/403Code/main/picture/fb-bot-react.gif" width="500">
 </p>
 <h4 align="center">
+  <img src="https://raw.githubusercontent.com/403Code/403Code/main/picture/bot-react.png">
   Otomatisasi Facebook Bot React dengan Google Script
 </h4>
 <div align="center">
