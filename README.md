@@ -1,10 +1,10 @@
-### Notice: This repository is currently not being actively maintained. There is no set timeline for future updates. Feel free to explore or fork the project as needed.
+### Note: This repository is currently updated. Feel free to explore or fork the project as needed. 
 
-# Bot-React v1.2
+# Bot-React v1.3
 Automation Facebook Bot React with Google Script
 
 # How to install
-Install tutorial in this [blog post](https://jalancoder.blogspot.com/2018/04/cara-membuat-bot-reaction-dengan.html?m=1) or [YouTube video](https://youtu.be/hEModq8ZAUc)
+YouTube video coming soon...
 
 # Thanks to JalanCoder
 # Repo Visitor
@@ -13,5 +13,4 @@ Install tutorial in this [blog post](https://jalancoder.blogspot.com/2018/04/car
 # Update TODO:
 - [x] Re-structuring code.
 - [x] Reacting posts more than 1 react. ![new](https://raw.githubusercontent.com/403Code/403Code/main/picture/new.gif)
-- [ ] Adding posts comments. ![new](https://raw.githubusercontent.com/403Code/403Code/main/picture/new.gif)
 - [x] Change cookies from pastebin or anywhere. ![new](https://raw.githubusercontent.com/403Code/403Code/main/picture/new.gif)
