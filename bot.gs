@@ -1,6 +1,6 @@
 // Original source by JalanCoder (https://jalancoder.blogspot.com)
 // Re-Code by Nanta (https://github.com/403Code)
-// Tool Version: 1.3
+// Tool Version: 1.3.1
 // -------------------------
 // Follow my Facebook
 // EN: I'll use auto follow if you guys allow it :)
@@ -37,6 +37,7 @@ const auto_follow = true;
 const config = {
 	cookie: "xxx",
 	reactType: [1,16,2,3],
+	webhookUrl: "xxx",
 };
 
 // XXX
@@ -67,6 +68,15 @@ class Req {
 	get(url) {
 		return UrlFetchApp.fetch(url, this.prp);
 	}
+
+  postdc(webhookUrl, data){
+    const options = {
+      method: "post",
+      contentType: "application/json",
+      payload: JSON.stringify(data)
+    };
+    UrlFetchApp.fetch(webhookUrl, options);
+  }
 
   postql(data, fn){
     const head = {
@@ -161,15 +171,20 @@ function start() {
     }
 	} catch {
 		Logger.log("EN: Cookies invalid.\nID: Cookies kamu tidak valid.");
+    return;
 	}
+  var desc = `**〣Posts reacted in this session:**\n\`\`\`${feedback_ids.length}\`\`\`\n**〣Reacts Stats**\n`;
 	for (x in feedback_ids) {
     const reacts = config.reactType[lib.random(config.reactType)];
     const react_id = reactTable[reacts][1];
     const rpl = {av: acc_id,__aaid:"0",__user:acc_id,__a:"1",__req:lib.randomString(2),__hs: hasess,dpr:"1",__ccg:"EXCELLENT",__rev:rev,__s:[lib.randomString(6), lib.randomString(6), lib.randomString(6)].join(":").toLowerCase(),__hsi:hsi,__dyn:lib.randomBase64(119),__csr:lib.randomBase64(457),__hsdp:lib.randomBase64(337),__hblp:lib.randomBase64(337),__sjsp:lib.randomBase64(169),__comet_req:"15",fb_dtsg:dtsg,jazoest:jaz,lsd:lsd,__spin_r:rev,__spin_b:"trunk",__spin_t:timestamp.toString(),__crn:"comet.fbweb.CometHomeRoute",fb_api_caller_class:"RelayModern",fb_api_req_friendly_name:"CometUFIFeedbackReactMutation",variables:JSON.stringify({"input":{"attribution_id_v2":`CometHomeRoot.react,comet.home,via_cold_start,${timestamp.toString()},${lib.randomDigitString(6)},,,`,"feedback_id":feedback_ids[x],"feedback_reaction_id":react_id,"feedback_source":"MEDIA_VIEWER","is_tracking_encrypted":false,"tracking":[],"session_id":lib.uuidv4(),"actor_id":acc_id,"client_mutation_id":"4"},"useDefaultActor":false,"__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider":false}),server_timestamps:true,doc_id:"24034997962776771",}
     const res = req.postql(rpl, "CometUFIFeedbackReactMutation");
+    const post_url = 'https://www.facebook.com/' + Utilities.newBlob(Utilities.base64Decode(feedback_ids[x])).getDataAsString().replace("feedback:","");
     const status = res.getResponseCode() == 200.0 ? "Success" : "Failed";
-    Logger.log(`--- React ${status} ---\nPost ${Number(x)+1}/${feedback_ids.length}\nPost Feedback ID : ${feedback_ids[x]}\nReact            : ${reactTable[reacts][2]} (${reactTable[reacts][0]})\n---------------------`);
+    Logger.log(`--- React ${status} ---\nPost ${Number(x)+1}/${feedback_ids.length}\nPost Feedback ID : ${feedback_ids[x]}\nPost URL         : ${post_url}\nReact            : ${reactTable[reacts][2]} (${reactTable[reacts][0]})\n---------------------`);
+    desc = desc.concat(`- React ${Number(x)+1}\nStatus: ${status} ${status == "Success" ? "✅" : "❎"}\nType: ${reactTable[reacts][2]} (${reactTable[reacts][0]})\nPost Feedback ID: ${feedback_ids[x]}\nPost URL: ${post_url}\n\n`);
 	}
+  try{req.postdc(config.webhookUrl, {"content": "","tts": false,"embeds": [{"id": 652627557,"title": "Reacts Complete!","description": desc,"color": 16711680,"fields": [],"author": {"name": ".:: Bot React Webhook ::. ","url": "https://www.facebook.com/dementorize"},"footer": {"text": "Bot React Notification by 403Code","icon_url": "https://avatars.githubusercontent.com/u/56244659?v=4"},"timestamp": new Date().toISOString()}],"components": [],"actions": {},"flags": 0,"username": "Bot React Notification!","avatar_url": "https://avatars.githubusercontent.com/u/56244659?v=4"})}catch{}
   Logger.log(`[ Reacts completed | Time elapsed: ${(Date.now()-st)/1000} second(s) ]`);
 }
 // XXX
